@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Locations</title>
+</head>
+<body>
+<a href="/Location/new">Nueva location</a>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(Locations)}">
+        <h2>Location list</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>lat</th>
+                <th>lng</th>
+                <th>terminal</th>
+                <th>likes</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="Location : ${Locations}">
+                <td th:text="${Location.id}">id</td>
+                <td th:text="${Location.lat}">lat</td>
+                <td th:text="${Location.lng}">lng</td>
+                <td th:text="${Location.terminalId.serial}">serialterminal</td>
+                <td th:text="${Location.likes}">likes</td>
+                <td><a th:href="${ '/Location/' + Location.id}">View</a></td>
+                <td><a th:href="${'/Location/edit/' + Location.id}">Edit</a></td>
+                <td><a th:href="${'/Location/delete/' + Location.id}">Delete</a></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

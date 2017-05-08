@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Categories</title>
+</head>
+<body>
+<a href="/Category/new">Nueva categoria</a>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(Categories)}">
+        <h2>Category list</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="Category : ${Categories}">
+                <td th:text="${Category.id}">id</td>
+                <td th:text="${Category.name}">name</td>
+
+                <td><a th:href="${ '/Category/' + Category.id}">View</a></td>
+                <td><a th:href="${'/Category/edit/' + Category.id}">Edit</a></td>
+                <td><a th:href="${'/Category/delete/' + Category.id}">Delete</a></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

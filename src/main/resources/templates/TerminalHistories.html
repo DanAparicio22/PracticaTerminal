@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Terminal Histories</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(TerminalHistories)}">
+        <h2>Terminal history list</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Active</th>
+                <th>Serial</th>
+                <th>Category id</th>
+                <th>User id</th>
+                <th>Terminal id</th>
+                <th>View</th>
+            </tr>
+            <tr th:each="TerminalHistory : ${TerminalHistories}">
+                <td th:text="${TerminalHistory.id}">id</td>
+                <td th:text="${TerminalHistory.active}">active</td>
+                <td th:text="${TerminalHistory.serial}">serial</td>
+                <td th:text="${TerminalHistory.category_id}">category_id</td>
+                <td th:text="${TerminalHistory.user_id}">user_id</td>
+                <td th:text="${TerminalHistory.TerminalId.id}">terminal_id</td>
+                <td><a th:href="${ '/TerminalHistory/' + TerminalHistory.id}">View</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
